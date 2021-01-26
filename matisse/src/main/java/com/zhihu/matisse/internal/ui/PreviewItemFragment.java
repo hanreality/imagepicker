@@ -20,8 +20,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,7 +81,7 @@ public class PreviewItemFragment extends Fragment {
             videoPlayButton.setVisibility(View.GONE);
         }
 
-        ImageViewTouch image = (ImageViewTouch) view.findViewById(R.id.image_view);
+        ImageViewTouch image = view.findViewById(R.id.image_view);
         image.setDisplayType(ImageViewTouchBase.DisplayType.FIT_TO_SCREEN);
 
         image.setSingleTapListener(new ImageViewTouch.OnImageViewTouchSingleTapListener() {

@@ -19,12 +19,12 @@ package com.zhihu.matisse;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
-import androidx.annotation.IntDef;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.annotation.StyleRes;
-import androidx.fragment.app.Fragment;
+import android.support.annotation.IntDef;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
+import android.support.annotation.StyleRes;
+import android.support.v4.app.Fragment;
 
 import com.zhihu.matisse.engine.ImageEngine;
 import com.zhihu.matisse.filter.Filter;
@@ -62,7 +62,7 @@ import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_USER_PORTRAIT;
 @SuppressWarnings("unused")
 public final class SelectionCreator {
     private final Matisse mMatisse;
-    private final SelectionSpec mSelectionSpec;
+    private SelectionSpec mSelectionSpec = null;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
     @IntDef({
@@ -99,6 +99,11 @@ public final class SelectionCreator {
         mSelectionSpec.mimeTypeSet = mimeTypes;
         mSelectionSpec.mediaTypeExclusive = mediaTypeExclusive;
         mSelectionSpec.orientation = SCREEN_ORIENTATION_UNSPECIFIED;
+    }
+
+    public SelectionCreator cameraOnly(boolean only) {
+        mSelectionSpec.cameraOnly = true;
+        return this;
     }
 
     /**
@@ -163,7 +168,7 @@ public final class SelectionCreator {
      *
      * @param maxImageSelectable Maximum selectable count for image.
      * @param maxVideoSelectable Maximum selectable count for video.
-     * @return  {@link SelectionCreator} for fluent API.
+     * @return {@link SelectionCreator} for fluent API.
      */
     public SelectionCreator maxSelectablePerMediaType(int maxImageSelectable, int maxVideoSelectable) {
         if (maxImageSelectable < 1 || maxVideoSelectable < 1)
@@ -216,6 +221,7 @@ public final class SelectionCreator {
 
     /**
      * Determines Whether to hide top and bottom toolbar in PreView mode ,when user tap the picture
+     *
      * @param enable
      * @return {@link SelectionCreator} for fluent API.
      */
@@ -237,7 +243,7 @@ public final class SelectionCreator {
 
     /**
      * Capture strategy provided for the location to save photos including internal and external
-     * storage and also a authority for {@link androidx.core.content.FileProvider}.
+     * storage and also a authority for FileProvider.
      *
      * @param captureStrategy {@link CaptureStrategy}, needed only when capturing is enabled.
      * @return {@link SelectionCreator} for fluent API.

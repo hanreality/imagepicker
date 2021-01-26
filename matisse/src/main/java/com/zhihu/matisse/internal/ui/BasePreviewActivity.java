@@ -19,10 +19,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.viewpager.widget.ViewPager;
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
-import androidx.appcompat.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
@@ -98,17 +98,17 @@ public abstract class BasePreviewActivity extends AppCompatActivity implements V
             mSelectedCollection.onCreate(savedInstanceState);
             mOriginalEnable = savedInstanceState.getBoolean(CHECK_STATE);
         }
-        mButtonBack = (TextView) findViewById(R.id.button_back);
-        mButtonApply = (TextView) findViewById(R.id.button_apply);
-        mSize = (TextView) findViewById(R.id.size);
+        mButtonBack = findViewById(R.id.button_back);
+        mButtonApply = findViewById(R.id.button_apply);
+        mSize = findViewById(R.id.size);
         mButtonBack.setOnClickListener(this);
         mButtonApply.setOnClickListener(this);
 
-        mPager = (ViewPager) findViewById(R.id.pager);
+        mPager = findViewById(R.id.pager);
         mPager.addOnPageChangeListener(this);
         mAdapter = new PreviewPagerAdapter(getSupportFragmentManager(), null);
         mPager.setAdapter(mAdapter);
-        mCheckView = (CheckView) findViewById(R.id.check_view);
+        mCheckView = findViewById(R.id.check_view);
         mCheckView.setCountable(mSpec.countable);
         mBottomToolbar = findViewById(R.id.bottom_toolbar);
         mTopToolbar = findViewById(R.id.top_toolbar);

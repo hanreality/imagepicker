@@ -17,8 +17,8 @@
 package com.zhihu.matisse.internal.entity;
 
 import android.content.pm.ActivityInfo;
+import android.support.annotation.StyleRes;
 
-import androidx.annotation.StyleRes;
 
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.R;
@@ -34,6 +34,7 @@ import java.util.Set;
 public final class SelectionSpec {
 
     public Set<MimeType> mimeTypeSet;
+    public boolean cameraOnly;
     public boolean mediaTypeExclusive;
     public boolean showSingleMediaType;
     @StyleRes
@@ -72,6 +73,7 @@ public final class SelectionSpec {
     }
 
     private void reset() {
+        cameraOnly = false;
         mimeTypeSet = null;
         mediaTypeExclusive = true;
         showSingleMediaType = false;

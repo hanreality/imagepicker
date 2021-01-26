@@ -21,16 +21,15 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.zhihu.matisse.Matisse;
@@ -46,7 +45,7 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
 
     private static final int REQUEST_CODE_CHOOSE = 23;
 
-    private UriAdapter mAdapter;
+//    private UriAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +55,10 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
         findViewById(R.id.dracula).setOnClickListener(this);
         findViewById(R.id.only_gif).setOnClickListener(this);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(mAdapter = new UriAdapter());
+        // RecyclerView recyclerView = findViewById(R.id.recyclerview);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setAdapter(mAdapter = new UriAdapter());
+        //   mAdapter = new UriAdapter();
     }
 
     // <editor-fold defaultstate="collapsed" desc="onClick">
@@ -67,8 +67,8 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(final View v) {
         RxPermissions rxPermissions = new RxPermissions(this);
         rxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                .subscribe(aBoolean -> {
-                    if (aBoolean) {
+                .subscribe(a -> {
+                    if (a) {
                         startAction(v);
                     } else {
                         Toast.makeText(SampleActivity.this, R.string.permission_request_denied, Toast.LENGTH_LONG)
@@ -83,7 +83,8 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.zhihu:
                 Matisse.from(SampleActivity.this)
                         .choose(MimeType.ofImage(), false)
-                        .countable(true)
+                        .cameraOnly(true)
+                        .countable(false)
                         .capture(true)
                         .captureStrategy(
                                 new CaptureStrategy(true, "com.zhihu.matisse.sample.fileprovider", "test"))
@@ -138,15 +139,15 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
             default:
                 break;
         }
-        mAdapter.setData(null, null);
+        //mAdapter.setData(null, null);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_CHOOSE && resultCode == RESULT_OK) {
-            mAdapter.setData(Matisse.obtainResult(data), Matisse.obtainPathResult(data));
-            Log.e("OnActivityResult ", String.valueOf(Matisse.obtainOriginalState(data)));
+            //  mAdapter.setData(Matisse.obtainResult(data), Matisse.obtainPathResult(data));
+            Log.e("OnActivityResult ", String.valueOf(Matisse.obtainOriginalState(data)) + " " + Matisse.obtainPathResult(data).size());
         }
     }
 
@@ -188,8 +189,8 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
 
             UriViewHolder(View contentView) {
                 super(contentView);
-                mUri = (TextView) contentView.findViewById(R.id.uri);
-                mPath = (TextView) contentView.findViewById(R.id.path);
+                mUri = contentView.findViewById(R.id.uri);
+                mPath = contentView.findViewById(R.id.path);
             }
         }
     }

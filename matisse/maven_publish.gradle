@@ -1,0 +1,100 @@
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+def isRelease() {
+    return hasProperty('VERSION_NAME') && !VERSION_NAME.contains("SNAPSHOT")
+}
+
+def getReleaseRepositoryUrl() {
+    if (hasProperty('mavenLocal') && (mavenLocal == "true")) {
+        group = GROUP
+        version = VERSION_NAME
+        return uri('../repo')
+    }
+    return hasProperty('RELEASE_REPOSITORY_URL') ? RELEASE_REPOSITORY_URL : "http://10.4.255.180:8081/nexus/content/repositories/android-releases/"
+}
+
+def getSnapshotRepositoryUrl() {
+    if (hasProperty('mavenLocal') && (mavenLocal == "true")) {
+        group = GROUP
+        version = VERSION_NAME
+        return uri('../repo-debug')
+    }
+    return hasProperty('SNAPSHOT_REPOSITORY_URL') ? SNAPSHOT_REPOSITORY_URL : "http://10.4.255.180:8081/nexus/content/repositories/android-snapshots/"
+}
+
+def getRepositoryUsername() {
+    return hasProperty('NEXUS_USERNAME') ? NEXUS_USERNAME : "deployment"
+}
+
+def getRepositoryPassword() {
+    return hasProperty('NEXUS_PASSWORD') ? NEXUS_PASSWORD : "deployment123"
+}
+
+def getAarType() {
+    if (hasProperty('PUBLISH_TYPE')) {
+        println('has publish type')
+        return PUBLISH_TYPE == null || PUBLISH_TYPE == 'aar'
+    }
+    return false
+}
+
+def getArtifactId() {
+    if (hasProperty('POM_ARTIFACT_ID')) {
+        return POM_ARTIFACT_ID
+    }
+    return project.name.toLowerCase()
+}
+
+signing {
+    required { isRelease() && gradle.taskGraph.hasTask("uploadArchives") }
+    sign configurations.archives
+}
+
+afterEvaluate { project ->
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                pom.groupId = GROUP
+                pom.artifactId = getArtifactId()
+                pom.version = VERSION_NAME
+                println "===========================" + getReleaseRepositoryUrl()
+                pom.project {
+                    if (getAarType()) {
+                        packaging 'aar'
+                    } else {
+                        packaging 'jar'
+                    }
+                }
+
+                repository(url: getReleaseRepositoryUrl()) {
+                    authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
+                }
+                snapshotRepository(url: getSnapshotRepositoryUrl()) {
+                    authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
+                }
+            }
+        }
+    }
+
+    task androidSourcesJar(type: Jar) {
+        classifier = 'sources'
+        if (getAarType()) {
+            from android.sourceSets.main.java.sourceFiles
+        } else {
+            from sourceSets.main.allSource
+        }
+    }
+
+    artifacts {
+        if (getAarType()) {
+            println('artifact aar')
+            androidSourcesJar
+            "${project.buildDir}/outputs/aar/${project.name}-release.aar"
+        } else {
+            println('artifact jar')
+            androidSourcesJar
+        }
+//        archives androidJavadocsJar
+    }
+}

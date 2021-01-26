@@ -24,8 +24,8 @@ import android.database.MergeCursor;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
+import android.support.v4.content.CursorLoader;
 
-import androidx.loader.content.CursorLoader;
 
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.internal.entity.Album;
@@ -288,6 +288,6 @@ public class AlbumLoader extends CursorLoader {
      * @return 是否是 Android 10 （Q） 之前的版本
      */
     private static boolean beforeAndroidTen() {
-        return android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.Q;
+        return android.os.Build.VERSION.SDK_INT < 29;//Build.VERSION_CODES.Q;
     }
 }

@@ -17,7 +17,8 @@ package com.zhihu.matisse.internal.ui;
 
 import android.database.Cursor;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
+import android.support.annotation.Nullable;
+
 
 import com.zhihu.matisse.internal.entity.Album;
 import com.zhihu.matisse.internal.entity.Item;
@@ -27,6 +28,8 @@ import com.zhihu.matisse.internal.ui.adapter.PreviewPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.app.Activity.RESULT_CANCELED;
 
 public class AlbumPreviewActivity extends BasePreviewActivity implements
         AlbumMediaCollection.AlbumMediaCallbacks {
