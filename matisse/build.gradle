@@ -51,7 +51,7 @@ dependencies {
 ext {
     GROUP = 'com.melot.meshow'
     POM_ARTIFACT_ID = 'matisse-support'
-    VERSION_NAME = '0.0.1'//'0.0.3-SNAPSHOT'
+    VERSION_NAME = '0.0.2-SNAPSHOT'//'0.0.3-SNAPSHOT'
     PUBLISH_TYPE = 'aar'
 }
 apply from: 'maven_publish.gradle'
