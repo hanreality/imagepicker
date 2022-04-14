@@ -57,6 +57,7 @@ ext {
 apply from: 'maven_publish.gradle'
 
 
+// 0.0.2 fix 相机不拍照返回界面异常
 // 0.0.1 基于 '0.5.3-beta3' 支持了support库，并且扩展了可以打开相机
 
 
