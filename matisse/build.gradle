@@ -51,12 +51,12 @@ dependencies {
 ext {
     GROUP = 'com.melot.meshow'
     POM_ARTIFACT_ID = 'matisse-support'
-    VERSION_NAME = '0.0.2'//'0.0.3-SNAPSHOT'
+    VERSION_NAME = '0.0.3'//'0.0.3-SNAPSHOT'
     PUBLISH_TYPE = 'aar'
 }
 apply from: 'maven_publish.gradle'
 
-
+// 0.0.3 fix 相册切换后为空
 // 0.0.2 fix 相机不拍照返回界面异常
 // 0.0.1 基于 '0.5.3-beta3' 支持了support库，并且扩展了可以打开相机
 

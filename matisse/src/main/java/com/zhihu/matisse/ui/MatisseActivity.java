@@ -399,6 +399,10 @@ public class MatisseActivity extends AppCompatActivity implements
             mContainer.setVisibility(View.VISIBLE);
             mEmptyView.setVisibility(View.GONE);
             Fragment fragment = MediaSelectionFragment.newInstance(album);
+            Fragment oldFragment = getSupportFragmentManager().findFragmentByTag(MediaSelectionFragment.class.getSimpleName());
+            if (oldFragment != null && oldFragment instanceof MediaSelectionFragment) {
+                ((MediaSelectionFragment) oldFragment).destroyManagerLoader();
+            }
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.container, fragment, MediaSelectionFragment.class.getSimpleName())
