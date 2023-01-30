@@ -63,9 +63,10 @@ artifacts {
 
 jenkinsTask {
     artifactId ='matisse-support'
-    version="0.0.4-SNAPSHOT"
+    version="0.0.4"
     groupId="com.melot.meshow"
 }
+// 0.0.4 support AndroidX 回调新增extra_result_is_capture区别是拍照还是从相册中选择
 // 0.0.3 fix 相册切换后为空
 
 // 0.0.2 fix 相机不拍照返回界面异常
