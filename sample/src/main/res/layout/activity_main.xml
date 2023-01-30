@@ -87,4 +87,9 @@
 
 <!--    </android.support.v7.widget.RecyclerView>-->
 
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitCenter"/>
 </LinearLayout>

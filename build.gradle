@@ -19,10 +19,14 @@ buildscript {
     repositories {
         jcenter()
         google()
+        maven {
+            url = 'http://10.4.255.180:8081/nexus/content/repositories/android-releases/'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.2'
 //        classpath 'com.novoda:bintray-release:0.9.1'
+        classpath 'com.melot.android:jenkinshelper:1.0.3'
     }
 }
 
@@ -30,6 +34,9 @@ allprojects {
     repositories {
         jcenter()
         google()
+        maven {
+            url = 'http://10.4.255.180:8081/nexus/content/repositories/android-releases/'
+        }
     }
 }
 

@@ -18,8 +18,8 @@ package com.zhihu.matisse;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.zhihu.matisse.ui.MatisseActivity;
 
@@ -105,6 +105,17 @@ public final class Matisse {
      */
     public static boolean obtainOriginalState(Intent data) {
         return data.getBooleanExtra(MatisseActivity.EXTRA_RESULT_ORIGINAL_ENABLE, false);
+    }
+
+    /**
+     * Obtain state whether is capture
+     *
+     * @param data Intent passed by {@link Activity#onActivityResult(int, int, Intent)} or
+     *             {@link Fragment#onActivityResult(int, int, Intent)}.
+     * @return whether is capture
+     */
+    public static boolean obtainIsCapture(Intent data) {
+        return data.getBooleanExtra(MatisseActivity.EXTRA_RESULT_IS_CAPTURE, false);
     }
 
     /**
