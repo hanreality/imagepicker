@@ -149,6 +149,7 @@ public class CropConfig extends BaseSelectConfig {
         parcelable.setLessOriginalByte(isLessOriginalByte());
         parcelable.setMaxOutPutByte(getMaxOutPutByte());
         parcelable.saveInDCIM(isSaveInDCIM());
+        parcelable.setSingleCropCutNeedTop(isSingleCropCutNeedTop());
         return parcelable;
     }
 }
