@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.melot.android.jenkinshelper'
 android {
     compileSdkVersion = 33
     buildToolsVersion = '28.0.3'
@@ -21,24 +20,6 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-}
-
-configurations.all {
-    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
-}
-
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-artifacts {
-    archives sourcesJar
-}
-
-jenkinsTask {
-    artifactId ='imagepicker'
-    version="1.0.1"
-    groupId="com.melot.android"
 }
 
 

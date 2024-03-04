@@ -1,1 +1,1 @@
-include ':sample', ':matisse', 'imagepicker'
+include ':sample', 'imagepicker'

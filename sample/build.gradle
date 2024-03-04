@@ -37,7 +37,7 @@ android {
 
 
 dependencies {
-    implementation project(':matisse')
+    implementation project(':imagepicker')
 
 //    implementation 'com.zhihu.android:matisse:0.5.2'
     implementation fileTree(dir: 'libs', include: ['*.jar'])

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="picker_str_bottom_choose">Pilih</string>
+    <string name="picker_str_bottom_original">Gambar asli</string>
+    <string name="picker_str_bottom_preview">Pratinjau</string>
+    <string name="picker_str_camera_permission">Anda telah menolak izin untuk mengambil gambar, penolakan untuk mengatur dapat membuat fungsi ini tidak dapat digunakan! Apakah Anda akan pergi ke pengaturan?</string>
+    <string name="picker_str_day">hari</string>
+    <string name="picker_str_folder_image_unit">lembar</string>
+    <string name="picker_str_folder_item_all">Gambar dan video</string>
+    <string name="picker_str_folder_item_image">Semua gambar</string>
+    <string name="picker_str_folder_item_video">Semua video</string>
+    <string name="picker_str_hour">jam</string>
+    <string name="picker_str_item_take_photo">Ambil foto</string>
+    <string name="picker_str_item_take_video">Rekam video</string>
+    <string name="picker_str_milli">milidetik</string>
+    <string name="picker_str_minute">menit</string>
+    <string name="picker_str_permission_go_setting">Pergi ke pengaturan</string>
+    <string name="picker_str_permission_refuse_setting">Tolak pengaturan</string>
+    <string name="picker_str_preview_empty">Data pratinjau kosong!</string>
+    <string name="picker_str_redBook_full">Penuh</string>
+    <string name="picker_str_redBook_gap">Biarkan kosong</string>
+    <string name="picker_str_second">detik</string>
+    <string name="picker_str_storage_permission">Anda telah menolak izin penyimpanan, penolakan untuk mengatur dapat membuat fungsi ini tidak dapat digunakan! Apakah Anda akan ke pengaturan?</string>
+    <string name="picker_str_str_video_over_max_duration">Durasi video tidak boleh melebihi</string>
+    <string name="picker_str_this_months">Bulan ini</string>
+    <string name="picker_str_this_week">Minggu ini</string>
+    <string name="picker_str_time_format">yyyy年MM月</string>
+    <string name="picker_str_tip_action_frequently">Jangan beroperasi terlalu cepat!</string>
+    <string name="picker_str_tip_cant_preview_video">Tidak mendukung pratinjau video!</string>
+    <string name="picker_str_tip_media_empty">Belum menemukan file media</string>
+    <string name="picker_str_tip_mimeTypes_empty">Pilih setidaknya satu jenis tipe file untuk dimuat!</string>
+    <string name="picker_str_tip_only_select_image">Hanya bisa memilih gambar!</string>
+    <string name="picker_str_tip_only_select_one_video">Hanya bisa memilih satu video!</string>
+    <string name="picker_str_tip_only_select_video">Hanya bisa memilih video!</string>
+    <string name="picker_str_tip_shield">File ini telah dipilih atau tidak dapat dipilih!</string>
+    <string name="picker_str_tip_singleCrop_error">Pemotongan tidak normal, gambar telah di-reset untuk Anda, silahkan coba lagi!</string>
+    <string name="picker_str_tip_video_less_min_duration">Durasi video tidak boleh kurang dari</string>
+    <string name="picker_str_title_all">Gambar dan Video</string>
+    <string name="picker_str_title_crop">Pemotongan gambar</string>
+    <string name="picker_str_title_crop_right">Konfirmasi</string>
+    <string name="picker_str_title_image">Pilih Gambar</string>
+    <string name="picker_str_title_right">Selesai</string>
+    <string name="picker_str_title_video">Pilih Video</string>
+    <string name="picker_str_today">Hari ini</string>
+</resources>

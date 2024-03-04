@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="picker_str_bottom_choose">اختر</string>
+    <string name="picker_str_bottom_original">الصورة الأصلية</string>
+    <string name="picker_str_bottom_preview">معاينة</string>
+    <string name="picker_str_camera_permission">لقد رفضت إذن التصوير، الرفض سيؤدي إلى عدم قدرة هذه الميزة على العمل! هل تذهب للإعداد؟</string>
+    <string name="picker_str_day">الأيام</string>
+    <string name="picker_str_folder_image_unit">صورة</string>
+    <string name="picker_str_folder_item_all">الصور والفيديوهات</string>
+    <string name="picker_str_folder_item_image">كل الصور</string>
+    <string name="picker_str_folder_item_video">كل الفيديوهات</string>
+    <string name="picker_str_hour">ساعة</string>
+    <string name="picker_str_item_take_photo">التقاط صورة</string>
+    <string name="picker_str_item_take_video">التقاط فيديو</string>
+    <string name="picker_str_milli">ملي ثانية</string>
+    <string name="picker_str_minute">دقيقة</string>
+    <string name="picker_str_permission_go_setting">إذهب للإعدادات</string>
+    <string name="picker_str_permission_refuse_setting">رفض الإعدادات</string>
+    <string name="picker_str_preview_empty">بيانات المعاينة فارغة!</string>
+    <string name="picker_str_redBook_full">كامل</string>
+    <string name="picker_str_redBook_gap">فراغ</string>
+    <string name="picker_str_second">ثانية</string>
+    <string name="picker_str_storage_permission">لقد رفضت الإذن بالتخزين، الرفض سيؤدي إلى عدم قدرة هذه الميزة على العمل! هل تذهب للإعدادات؟</string>
+    <string name="picker_str_str_video_over_max_duration">لا يجب أن تتجاوز مدة الفيديو</string>
+    <string name="picker_str_this_months">هذا الشهر</string>
+    <string name="picker_str_this_week">هذا الأسبوع</string>
+    <string name="picker_str_time_format">yyyy年MM月</string>
+    <string name="picker_str_tip_action_frequently">الرجاء عدم التحرك بسرعة!</string>
+    <string name="picker_str_tip_cant_preview_video">لا يمكن معاينة الفيديو!</string>
+    <string name="picker_str_tip_media_empty">لم يتم العثور على ملفات وسائط حتى الآن</string>
+    <string name="picker_str_tip_mimeTypes_empty">الرجاء اختيار نوع واحد على الأقل من أنواع التحميل الملف!</string>
+    <string name="picker_str_tip_only_select_image">يمكن فقط اختيار صورة!</string>
+    <string name="picker_str_tip_only_select_one_video">يمكن اختيار فيديو واحد فقط!</string>
+    <string name="picker_str_tip_only_select_video">يمكن فقط اختيار فيديو!</string>
+    <string name="picker_str_tip_shield">تم تحديد الملف هذا من قبل أو أنه لا يمكن تحديده!</string>
+    <string name="picker_str_tip_singleCrop_error">خطأ في القص، تم إعادة ضبط الصورة لك، يرجى المحاولة مرة أخرى!</string>
+    <string name="picker_str_tip_video_less_min_duration">لا يجب أن تكون مدة الفيديو أقل من</string>
+    <string name="picker_str_title_all">الصور والفيديو</string>
+    <string name="picker_str_title_crop">قص الصور</string>
+    <string name="picker_str_title_crop_right">تأكيد</string>
+    <string name="picker_str_title_image">اختر صورة</string>
+    <string name="picker_str_title_right">انتهاء</string>
+    <string name="picker_str_title_video">اختر فيديو</string>
+    <string name="picker_str_today">اليوم</string>
+</resources>
