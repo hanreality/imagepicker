@@ -16,4 +16,6 @@
   -->
 <resources>
     <color name="list_bg">#3B3B3B</color>
+    <color name="zhihu_primary">#3B3B3B</color>
+    <color name="dracula_primary">#3B3B3B</color>
 </resources>
