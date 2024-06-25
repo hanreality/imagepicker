@@ -1,0 +1,13 @@
+/**
+ * 添加依赖库的源
+ * @param handler repositories
+ */
+static def addRepository(RepositoryHandler handler) {
+    handler.maven { url 'https://maven.aliyun.com/repository/public' }
+    handler.maven { url 'https://maven.aliyun.com/repository/google' }
+    handler.maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+    handler.maven { url "https://jitpack.io" }
+}
+
+// 添加到全局的变量中
+ext.addRepository = this.&addRepository
