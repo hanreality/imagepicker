@@ -32,8 +32,12 @@ import com.ypx.imagepicker.bean.MimeType;
 import com.ypx.imagepicker.bean.selectconfig.CropConfig;
 import com.ypx.imagepicker.data.OnImagePickCompleteListener;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 
 public class SampleActivity extends AppCompatActivity {
 
@@ -66,12 +70,55 @@ public class SampleActivity extends AppCompatActivity {
                                             .crop(SampleActivity.this, new OnImagePickCompleteListener() {
                                                 @Override
                                                 public void onImagePickComplete(ArrayList<ImageItem> items) {
-                                                    Log.d("han.chen", items.get(0).getCropUrl());
+                                                    Luban.with(SampleActivity.this)
+                                                            .load(items.get(0).getCropUrl())
+                                                            .ignoreBy(100)
+                                                            .setTargetDir(SampleActivity.this.getCacheDir().getAbsolutePath())
+                                                            .setCompressListener(new OnCompressListener() {
+                                                                @Override
+                                                                public void onStart() {
+
+                                                                }
+
+                                                                @Override
+                                                                public void onSuccess(File file) {
+                                                                    Log.d("han.chen", "onSuccess: " + file.getAbsolutePath());
+                                                                }
+
+                                                                @Override
+                                                                public void onError(Throwable e) {
+
+                                                                }
+                                                            }).launch();
                                                 }
                                             });
                                 }
                             });
 
+                });
+        findViewById(R.id.dracula)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ImagePicker.withMulti(new PickerPresenter())
+                                .setMaxCount(1)
+                                .setColumnCount(3)
+                                .setSinglePickWithAutoComplete(false)
+                                .mimeTypes(MimeType.ofImage())
+                                .filterMimeTypes(MimeType.GIF)
+                                .showCamera(true)
+                                .setPreview(false)
+                                .setOriginal(true)
+                                .setDefaultOriginal(false)
+                                .pick(SampleActivity.this, new OnImagePickCompleteListener() {
+                                    @Override
+                                    public void onImagePickComplete(ArrayList<ImageItem> items) {
+                                        Log.d("han.chen", "onImagePickComplete: " + items.get(0).getPath());
+                                        File file = new File(items.get(0).getPath());
+                                        Log.d("han.chen", "onImagePickComplete: " + file.exists());
+                                    }
+                                });
+                    }
                 });
     }
 }

@@ -171,7 +171,7 @@ public class PBitmapUtils {
         Uri uri = null;
         if (Build.VERSION.SDK_INT >= 29) {
             try {
-                contentValues.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES);
+                contentValues.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_DCIM);
                 Uri externalUri = MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL);
                 uri = context.getContentResolver().insert(externalUri, contentValues);
             } catch (Exception e) {
@@ -261,10 +261,10 @@ public class PBitmapUtils {
         }
         Uri uri = null;
         String suffix = "." + mimeType.getSuffix();
-        String path = getDCIMDirectory().getAbsolutePath() + File.separator + fileName + suffix;
+        String  path = getDCIMDirectory().getAbsolutePath() + File.separator + fileName + suffix;
         if (Build.VERSION.SDK_INT >= 29) {
             try {
-                contentValues.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES);
+                contentValues.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_DCIM);
                 Uri external = MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY);
                 uri = context.getContentResolver().insert(external, contentValues);
             } catch (Exception e) {
