@@ -168,14 +168,26 @@ public class PBitmapUtils {
         contentValues.put(MediaStore.Files.FileColumns.HEIGHT, bitmap.getHeight());
         String suffix = "." + compressFormat.toString().toLowerCase();
         String path = getDCIMDirectory().getAbsolutePath() + File.separator + fileName + suffix;
-        try {
-            contentValues.put(MediaStore.Images.Media.DATA, path);
-        } catch (Exception ignored) {
-
+        Uri uri = null;
+        if (Build.VERSION.SDK_INT >= 29) {
+            try {
+                contentValues.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES);
+                Uri externalUri = MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL);
+                uri = context.getContentResolver().insert(externalUri, contentValues);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                contentValues.put(MediaStore.Images.Media.DATA, path);
+                //执行insert操作，向系统文件夹中添加文件
+                //EXTERNAL_CONTENT_URI代表外部存储器，该值不变
+                uri = context.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-        //执行insert操作，向系统文件夹中添加文件
-        //EXTERNAL_CONTENT_URI代表外部存储器，该值不变
-        Uri uri = context.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+
         if (uri != null) {
             //若生成了uri，则表示该文件添加成功
             //使用流将内容写入该uri中即可
@@ -247,17 +259,28 @@ public class PBitmapUtils {
             long duration = PBitmapUtils.getLocalVideoDuration(sourceFilePath);
             contentValues.put("duration", duration);
         }
+        Uri uri = null;
         String suffix = "." + mimeType.getSuffix();
         String path = getDCIMDirectory().getAbsolutePath() + File.separator + fileName + suffix;
-        try {
-            contentValues.put(MediaStore.Images.Media.DATA, path);
-        } catch (Exception ignored) {
-
+        if (Build.VERSION.SDK_INT >= 29) {
+            try {
+                contentValues.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES);
+                Uri external = MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY);
+                uri = context.getContentResolver().insert(external, contentValues);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                contentValues.put(MediaStore.Images.Media.DATA, path);
+                //执行insert操作，向系统文件夹中添加文件
+                //EXTERNAL_CONTENT_URI代表外部存储器，该值不变
+                uri = context.getContentResolver().insert(isImage ? MediaStore.Images.Media.EXTERNAL_CONTENT_URI :
+                        MediaStore.Video.Media.EXTERNAL_CONTENT_URI, contentValues);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-        //执行insert操作，向系统文件夹中添加文件
-        //EXTERNAL_CONTENT_URI代表外部存储器，该值不变
-        Uri uri = context.getContentResolver().insert(isImage ? MediaStore.Images.Media.EXTERNAL_CONTENT_URI :
-                MediaStore.Video.Media.EXTERNAL_CONTENT_URI, contentValues);
         copyFile(context, sourceFilePath, uri);
         return new UriPathInfo(uri, path);
     }
